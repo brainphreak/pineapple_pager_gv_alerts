@@ -68,13 +68,13 @@ The webhook runs on Google's free infrastructure and checks your Gmail for Googl
    scp -r notifications root@172.16.52.1:/root/payloads/user/
    ```
 
-3. On the pager, go to: **PAYLOADS** > **notifications** > **gv_alerts**
+3. On the pager, go to: **PAYLOADS** > **notifications** > **Google Voice Alerts**
 
 4. Select **Yes** to install
 
 ## Usage
 
-Launch the payload from **PAYLOADS** > **notifications** > **gv_alerts**:
+Launch the payload from **PAYLOADS** > **notifications** > **Google Voice Alerts**:
 
 | Prompt | Yes | No |
 |--------|-----|-----|
