@@ -1,5 +1,7 @@
 # Google Voice Alerts
 
+![GV Alerts Screenshot](gv-alerts.png)
+
 Receive Google Voice calls, texts, and voicemails as alerts on your WiFi Pineapple Pager.
 
 ## Features
