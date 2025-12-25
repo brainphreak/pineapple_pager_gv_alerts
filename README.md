@@ -1,6 +1,6 @@
 # Google Voice Alerts
 
-![GV Alerts Screenshot](gv-alerts.png)
+![GV Alerts Screenshot](screenshots/gv-alerts.png)
 
 Receive Google Voice calls, texts, and voicemails as alerts on your WiFi Pineapple Pager.
 
@@ -40,28 +40,28 @@ The webhook runs on Google's free infrastructure and checks your Gmail for Googl
 1. Go to [script.google.com](https://script.google.com)
 2. Click **New Project**
 
-![Create Project](create-project.png)
+![Create Project](screenshots/create-project.png)
 
 3. Delete any existing code and paste the contents of `google-apps-script.js`
 
-![Paste Script](paste-script.png)
+![Paste Script](screenshots/paste-script.png)
 
 4. Click **Save** (name it "GV Alerts Webhook")
 5. Click **Deploy** > **New deployment**
 
-![New Deployment](new-deployment.png)
+![New Deployment](screenshots/new-deployment.png)
 
 6. Select type: **Web app**
 7. Set:
    - Execute as: **Me**
    - Who has access: **Anyone**
 
-![Create Webhook](create-webhook.png)
+![Create Webhook](screenshots/create-webhook.png)
 
 8. Click **Deploy**
 9. Click **Authorize access** and allow Gmail permissions
 
-![Authorize Access](authorize-access.png)
+![Authorize Access](screenshots/authorize-access.png)
 
 10. Copy the **Web app URL** - this is your webhook
 
@@ -85,25 +85,25 @@ The webhook runs on Google's free infrastructure and checks your Gmail for Googl
 
 3. On the pager, go to: **PAYLOADS** > **notifications** > **Google Voice Alerts**
 
-![Payload Menu](gv-payload.png)
+![Payload Menu](screenshots/gv-payload.png)
 
 4. Launch the payload
 
-![Launch Payload](gv-launch.png)
+![Launch Payload](screenshots/gv-launch.png)
 
 5. You can test the connection first, or select **Yes** to install
 
-![Install Screen](gv-install-screen.png)
+![Install Screen](screenshots/gv-install-screen.png)
 
-![Test Option](gv-test.png)
+![Test Option](screenshots/gv-test.png)
 
-![Testing](gv-testing.png)
+![Testing](screenshots/gv-testing.png)
 
 6. Select **Yes** to install
 
-![Installing](gv-install.png)
+![Installing](screenshots/gv-install.png)
 
-![Installed](gv-installed.png)
+![Installed](screenshots/gv-installed.png)
 
 ![Installed Menu](gv-installed-2.png)
 
@@ -122,9 +122,9 @@ Launch the payload from **PAYLOADS** > **notifications** > **Google Voice Alerts
 
 To uninstall, launch the payload and navigate through the menu options:
 
-![Turn Off Option](gv-off-option.png)
+![Turn Off Option](screenshots/gv-off-option.png)
 
-![Uninstalled](gv-uninstalled.png)
+![Uninstalled](screenshots/gv-uninstalled.png)
 
 ## Technical Details
 
