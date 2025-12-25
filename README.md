@@ -10,7 +10,7 @@ Receive Google Voice calls, texts, and voicemails as alerts on your WiFi Pineapp
   - Missed calls
   - Voicemails (with transcription preview)
   - Text messages (with preview)
-- Configurable check interval (1, 2, 5, or 10 minutes)
+- Configurable check interval (in minutes)
 - Hash-based duplicate detection (no repeated alerts)
 - Bandwidth optimization (minimal data when no new messages)
 - Toggle on/off from payload menu
@@ -60,7 +60,7 @@ The webhook runs on Google's free infrastructure and checks your Gmail for Googl
 1. Edit `notifications/gv_alerts/payload.sh` and configure:
    ```bash
    WEBHOOK_URL="https://script.google.com/macros/s/YOUR_SCRIPT_ID_HERE/exec"
-   CHECK_INTERVAL=2  # Minutes between checks (1, 2, 5, or 10)
+   CHECK_INTERVAL=2  # Minutes between checks
    ```
 
 2. Copy the `notifications` folder to your pager:

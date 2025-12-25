@@ -10,7 +10,7 @@
 # =============================================================================
 
 WEBHOOK_URL="https://script.google.com/macros/s/YOUR_SCRIPT_ID_HERE/exec"
-CHECK_INTERVAL=2  # Minutes between checks (1, 2, 5, or 10)
+CHECK_INTERVAL=2  # Minutes between checks
 
 # =============================================================================
 # INTERNAL CONFIGURATION (don't edit)
