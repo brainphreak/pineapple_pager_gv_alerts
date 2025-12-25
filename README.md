@@ -39,15 +39,30 @@ The webhook runs on Google's free infrastructure and checks your Gmail for Googl
 
 1. Go to [script.google.com](https://script.google.com)
 2. Click **New Project**
+
+![Create Project](create-project.png)
+
 3. Delete any existing code and paste the contents of `google-apps-script.js`
+
+![Paste Script](paste-script.png)
+
 4. Click **Save** (name it "GV Alerts Webhook")
 5. Click **Deploy** > **New deployment**
+
+![New Deployment](new-deployment.png)
+
 6. Select type: **Web app**
 7. Set:
    - Execute as: **Me**
    - Who has access: **Anyone**
+
+![Create Webhook](create-webhook.png)
+
 8. Click **Deploy**
 9. Click **Authorize access** and allow Gmail permissions
+
+![Authorize Access](authorize-access.png)
+
 10. Copy the **Web app URL** - this is your webhook
 
 **Test it:** Open the URL in a browser. You should see:
