@@ -85,11 +85,31 @@ The webhook runs on Google's free infrastructure and checks your Gmail for Googl
 
 3. On the pager, go to: **PAYLOADS** > **notifications** > **Google Voice Alerts**
 
-4. Select **Yes** to install
+![Payload Menu](gv-payload.png)
+
+4. Launch the payload
+
+![Launch Payload](gv-launch.png)
+
+5. You can test the connection first, or select **Yes** to install
+
+![Install Screen](gv-install-screen.png)
+
+![Test Option](gv-test.png)
+
+![Testing](gv-testing.png)
+
+6. Select **Yes** to install
+
+![Installing](gv-install.png)
+
+![Installed](gv-installed.png)
 
 ## Usage
 
 Launch the payload from **PAYLOADS** > **notifications** > **Google Voice Alerts**:
+
+![Installed Menu](gv-installed-2.png)
 
 | Prompt | Yes | No |
 |--------|-----|-----|
@@ -97,6 +117,10 @@ Launch the payload from **PAYLOADS** > **notifications** > **Google Voice Alerts
 | Check for messages now? | Check immediately | More options... |
 | Clear message history? | Clear (re-alert all) | More options... |
 | Uninstall GV Alerts? | Uninstall | Exit |
+
+![Turn Off Option](gv-off-option.png)
+
+![Uninstalled](gv-uninstalled.png)
 
 ## Technical Details
 
