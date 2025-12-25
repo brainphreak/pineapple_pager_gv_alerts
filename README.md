@@ -105,11 +105,11 @@ The webhook runs on Google's free infrastructure and checks your Gmail for Googl
 
 ![Installed](gv-installed.png)
 
+![Installed Menu](gv-installed-2.png)
+
 ## Usage
 
 Launch the payload from **PAYLOADS** > **notifications** > **Google Voice Alerts**:
-
-![Installed Menu](gv-installed-2.png)
 
 | Prompt | Yes | No |
 |--------|-----|-----|
@@ -117,6 +117,10 @@ Launch the payload from **PAYLOADS** > **notifications** > **Google Voice Alerts
 | Check for messages now? | Check immediately | More options... |
 | Clear message history? | Clear (re-alert all) | More options... |
 | Uninstall GV Alerts? | Uninstall | Exit |
+
+## Uninstalling
+
+To uninstall, launch the payload and navigate through the menu options:
 
 ![Turn Off Option](gv-off-option.png)
 
