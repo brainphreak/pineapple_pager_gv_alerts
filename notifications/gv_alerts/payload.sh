@@ -2,7 +2,7 @@
 # Title: Google Voice Alerts
 # Author: brAinphreAk
 # Description: Receive Google Voice calls/texts/voicemails as alerts
-# Version: 2.0
+# Version: 2.1
 # Category: Notifications
 
 # =============================================================================
@@ -32,8 +32,11 @@ do_check() {
     last_hash=""
     [ -f "$LAST_HASH_FILE" ] && last_hash=$(cat "$LAST_HASH_FILE" 2>/dev/null)
 
+    # URL-encode the hash (contains + and / which break URL params)
+    encoded_hash=$(printf '%s' "$last_hash" | sed 's/+/%2B/g; s/\//%2F/g')
+
     # Check messages (pass lastHash to reduce bandwidth when unchanged)
-    response=$(curl -sL -m 15 "$WEBHOOK_URL?lastHash=$last_hash" 2>/dev/null)
+    response=$(curl -sL -m 15 "$WEBHOOK_URL?lastHash=$encoded_hash" 2>/dev/null)
     [ $? -ne 0 ] || [ -z "$response" ] && exit 1
 
     # Check if unchanged (minimal response = no new messages)
