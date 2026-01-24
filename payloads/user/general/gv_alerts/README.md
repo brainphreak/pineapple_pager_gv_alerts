@@ -28,7 +28,7 @@ The webhook runs on Google's free infrastructure and checks your Gmail for Googl
 
 ```
 ├── google-apps-script.js       # Webhook code (deploy to Google)
-└── notifications/
+└── general/
     └── gv_alerts/
         └── payload.sh          # Pager payload
 ```
@@ -72,18 +72,18 @@ The webhook runs on Google's free infrastructure and checks your Gmail for Googl
 
 ### Step 2: Configure and Install the Payload
 
-1. Edit `notifications/gv_alerts/payload.sh` and configure:
+1. Edit `general/gv_alerts/payload.sh` and configure:
    ```bash
    WEBHOOK_URL="https://script.google.com/macros/s/YOUR_SCRIPT_ID_HERE/exec"
    CHECK_INTERVAL=2  # Minutes between checks
    ```
 
-2. Copy the `notifications` folder to your pager:
+2. Copy the `general` folder to your pager:
    ```bash
-   scp -r notifications root@172.16.52.1:/root/payloads/user/
+   scp -r general root@172.16.52.1:/root/payloads/user/
    ```
 
-3. On the pager, go to: **PAYLOADS** > **notifications** > **Google Voice Alerts**
+3. On the pager, go to: **PAYLOADS** > **general** > **Google Voice Alerts**
 
 ![Payload Menu](screenshots/gv-payload.png)
 
@@ -105,11 +105,11 @@ The webhook runs on Google's free infrastructure and checks your Gmail for Googl
 
 ![Installed](screenshots/gv-installed.png)
 
-![Installed Menu](gv-installed-2.png)
+![Installed Menu](screenshots/gv-installed-2.png)
 
 ## Usage
 
-Launch the payload from **PAYLOADS** > **notifications** > **Google Voice Alerts**:
+Launch the payload from **PAYLOADS** > **general** > **Google Voice Alerts**:
 
 | Prompt | Yes | No |
 |--------|-----|-----|
@@ -177,7 +177,7 @@ The payload automatically manages the cron service:
 
 The hash-based detection should prevent this. If it happens:
 1. Clear the hash via the payload menu
-2. Or manually: `rm /root/payloads/user/notifications/gv_alerts/.last_hash`
+2. Or manually: `rm /root/payloads/user/general/gv_alerts/.last_hash`
 
 ## Security
 

@@ -16,7 +16,7 @@ CHECK_INTERVAL=2  # Minutes between checks
 # INTERNAL CONFIGURATION (don't edit)
 # =============================================================================
 
-INSTALL_DIR="/root/payloads/user/notifications/gv_alerts"
+INSTALL_DIR="/root/payloads/user/general/gv_alerts"
 LAST_HASH_FILE="$INSTALL_DIR/.last_hash"
 CRON_ENTRY="*/$CHECK_INTERVAL * * * * $INSTALL_DIR/payload.sh --check"
 
@@ -26,7 +26,7 @@ CRON_ENTRY="*/$CHECK_INTERVAL * * * * $INSTALL_DIR/payload.sh --check"
 
 do_check() {
     # Exit if no webhook configured
-    [ -z "$WEBHOOK_URL" ] || echo "$WEBHOOK_URL" | grep -q 'YOUR_SCRI''PT_ID' && exit 0
+    [ -z "$WEBHOOK_URL" ] || echo "$WEBHOOK_URL" | grep -q 'YOUR_SCRIPT_ID_HERE' && return 0
 
     # Read last hash for bandwidth optimization
     last_hash=""
@@ -37,11 +37,11 @@ do_check() {
 
     # Check messages (pass lastHash to reduce bandwidth when unchanged)
     response=$(curl -sL -m 15 "$WEBHOOK_URL?lastHash=$encoded_hash" 2>/dev/null)
-    [ $? -ne 0 ] || [ -z "$response" ] && exit 1
+    [ $? -ne 0 ] || [ -z "$response" ] && return 1
 
     # Check if unchanged (minimal response = no new messages)
     unchanged=$(echo "$response" | grep -o '"unchanged":true')
-    [ -n "$unchanged" ] && exit 0
+    [ -n "$unchanged" ] && return 0
 
     # Parse full response
     has_messages=$(echo "$response" | grep -o '"hasMessages":true')
@@ -75,7 +75,7 @@ install_payload() {
     LOG blue "Installing GV Alerts..."
 
     # Check if webhook URL is configured
-    if [ -z "$WEBHOOK_URL" ] || echo "$WEBHOOK_URL" | grep -q 'YOUR_SCRI''PT_ID'; then
+    if [ -z "$WEBHOOK_URL" ] || echo "$WEBHOOK_URL" | grep -q 'YOUR_SCRIPT_ID_HERE'; then
         ALERT "Webhook not configured!\n\nSet WEBHOOK_URL in\npayload.sh and re-upload."
         exit 1
     fi
@@ -163,7 +163,7 @@ check_now() {
 
 test_alerts() {
     # Check if webhook URL is configured
-    if [ -z "$WEBHOOK_URL" ] || echo "$WEBHOOK_URL" | grep -q 'YOUR_SCRI''PT_ID'; then
+    if [ -z "$WEBHOOK_URL" ] || echo "$WEBHOOK_URL" | grep -q 'YOUR_SCRIPT_ID_HERE'; then
         LOG red "Webhook URL not configured"
         ALERT "Webhook not configured!\n\nSet WEBHOOK_URL in\npayload.sh and re-upload."
         return

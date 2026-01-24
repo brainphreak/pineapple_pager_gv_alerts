@@ -173,20 +173,20 @@ function parseGoogleVoiceEmail(msg) {
   // Check for missed calls
   if (subject.includes('missed call') || bodyLower.includes('missed call')) {
     type = 'missed_call';
-    phoneNumber = extractPhoneNumber(msg.getSubject()) || extractPhoneNumber(body);
+    phoneNumber = extractPhoneNumber(msg.getSubject()) || extractPhoneNumber(body) || extractCallerName(msg.getSubject());
   }
   // Check for voicemails
   else if (subject.includes('voicemail') || bodyLower.includes('voicemail') ||
            bodyLower.includes('new voicemail') || bodyLower.includes('left you a voicemail')) {
     type = 'voicemail';
-    phoneNumber = extractPhoneNumber(msg.getSubject()) || extractPhoneNumber(body);
+    phoneNumber = extractPhoneNumber(msg.getSubject()) || extractPhoneNumber(body) || extractCallerName(msg.getSubject());
     preview = extractPreview(body);
   }
   // Check for texts - including from txt.voice.google.com
   else if (subject.includes('text') || bodyLower.includes('text from') ||
            from.includes('txt.voice.google.com') || bodyLower.includes('sent you a text')) {
     type = 'text';
-    phoneNumber = extractPhoneNumber(msg.getSubject()) || extractPhoneNumber(body);
+    phoneNumber = extractPhoneNumber(msg.getSubject()) || extractPhoneNumber(body) || extractCallerName(msg.getSubject());
     preview = extractPreview(body);
   }
   // Check sender for voice-noreply (could be any type)
@@ -202,7 +202,7 @@ function parseGoogleVoiceEmail(msg) {
       type = 'text';
       preview = extractPreview(body);
     }
-    phoneNumber = extractPhoneNumber(body);
+    phoneNumber = extractPhoneNumber(body) || extractCallerName(msg.getSubject());
   }
   // Generic Google Voice check
   else if (subject.includes('google voice') || from.includes('google')) {
@@ -215,7 +215,7 @@ function parseGoogleVoiceEmail(msg) {
       type = 'text';
       preview = extractPreview(body);
     }
-    phoneNumber = extractPhoneNumber(body);
+    phoneNumber = extractPhoneNumber(body) || extractCallerName(msg.getSubject());
   }
 
   if (type === 'unknown') return null;
@@ -246,6 +246,27 @@ function extractPhoneNumber(text) {
     const match = text.match(pattern);
     if (match) {
       return formatPhoneNumber(match[0]);
+    }
+  }
+  return null;
+}
+
+/**
+ * Extract caller name from subject line (for contacts without phone numbers)
+ * Handles: "New voicemail from Joe Bertao", "Text from Joe Bertao", "Missed call from Joe Bertao"
+ */
+function extractCallerName(subject) {
+  const patterns = [
+    /voicemail from (.+)/i,
+    /text from (.+)/i,
+    /missed call from (.+)/i,
+    /call from (.+)/i
+  ];
+
+  for (const pattern of patterns) {
+    const match = subject.match(pattern);
+    if (match && match[1]) {
+      return match[1].trim();
     }
   }
   return null;
